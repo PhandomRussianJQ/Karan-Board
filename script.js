@@ -1,3 +1,5 @@
+// Create a Card & Create UI
+
 let id;
 
 if(localStorage.getItem("id") === null ){
@@ -45,6 +47,8 @@ function closeui(){
 	button.style.display = "block";
 }
 
+
+// Delete Button on Card
 function deletecard(e){
 	let parrent = e.parentElement;
 	parrent.remove();
@@ -77,31 +81,29 @@ function onDrop(event){
 
 // local storage
 
-function testfun(){
-	let text = "Willst du wirklich das Board löschen.\nEs ist dann alles weg!";
+function deleteStorage(){
+	let text = "Do you really want to delete everything.\nIt's all gone then!";
 	if (confirm(text) == true) {
 		localStorage.clear();
-		console.log("gelöscht!")
 		location.reload()
 	} else {
-		console.log("Nicht gelöscht!")
 	  	return;
 	}
 
 }
 
-function testcool(){
+function saveStorage(){
 	localStorage.removeItem("card");
-	var todoList = document.querySelectorAll(".card");
+	var cards = document.querySelectorAll(".card");
 
 	var json = "{}"
 	var array = []
-	Array.from(todoList).forEach(function(todo) {
+	Array.from(cards).forEach(function(card) {
 
-		const id= todo.id;
-		const titel = todo.firstElementChild;
+		const id= card.id;
+		const titel = card.firstElementChild;
 		const description = titel.nextElementSibling;
-		const parrentElemten = todo.parentElement.id;
+		const parrentElemten = card.parentElement.id;
 		const date = description.nextElementSibling.value;	
 		
 		array.push(
@@ -116,44 +118,41 @@ function testcool(){
 		json = array;
 	});
 
-	console.log('json: ', json);
-
-	localStorage.setItem("todocard", JSON.stringify(json));
-	alert("Das Board wurde gesprechert.");
+	localStorage.setItem("card", JSON.stringify(json));
+	alert("The Board was saved.");
 }
 
-function testnotcool(){
-	if(localStorage.getItem("todocard") == null || localStorage.getItem("todocard") == '"{}"') {
-		alert("Es gibt kein Board zum Laden. Erstelle neue Karten und speicher es dann.");
+function loadStorage(){
+	if(localStorage.getItem("card") == null || localStorage.getItem("card") == '"{}"') {
+		alert("There is no board to load. Create new Card and then save it.");
 		return;
 	}else{
-		let tst = localStorage.getItem("todocard");
-		let tet = JSON.parse(tst);
-		console.log(tet); 
-		let arrayLength = tet.length
+		let rawCards = localStorage.getItem("card");
+		let Cards = JSON.parse(rawCards);
+		let cardsLength = tet.length
 	
 	
-		for (var i = 0; i < arrayLength; i++) {
-			document.getElementById(tet[i].parrent).innerHTML += `
-			<div class="card" id="${tet[i].id}" draggable="true" ondragstart="dragstart(event)">
-				<h3 contenteditable="true">${tet[i].titel}</h3>
-				<p contenteditable="true">${tet[i].description}</p>
-				<input type="datetime-local" id="dateFinished" value=${tet[i].date}>
-				<button class="delete" id="${tet[i].id}" onclick = "deletecard(this)">X</button>
+		for (var i = 0; i < cardsLength; i++) {
+			document.getElementById(Cards[i].parrent).innerHTML += `
+			<div class="card" id="${Cards[i].id}" draggable="true" ondragstart="dragstart(event)">
+				<h3 contenteditable="true">${Cards[i].titel}</h3>
+				<p contenteditable="true">${Cards[i].description}</p>
+				<input type="datetime-local" id="dateFinished" value=${Cards[i].date}>
+				<button class="delete" id="${Cards[i].id}" onclick = "deletecard(this)">X</button>
 			</div>`
 		}
 	
 	}
 }
 
-function cardLaden(){
-	if(localStorage.getItem("card") == null) {
+function autoLoad(){
+	if(localStorage.getItem("card") == null || localStorage.getItem("card") == '"{}"') {
 		return;
 	}else{
-		document.getElementById("inWork").innerHTML += localStorage.getItem("card")		
+		loadStorage();
 	}
 }
-document.addEventListener("DOMContentLoaded", cardLaden());
+document.addEventListener("DOMContentLoaded", autoLoad());
 
 
 addEventListener("beforeunload", (event) => {

@@ -8,6 +8,7 @@ h1 {
 	display: flex;
 	justify-content: center;
 }
+/* Button */
 
 input[type="submit"], input[type="button"]{
 	border: none;
@@ -34,6 +35,8 @@ input[type="submit"], input[type="button"]{
 .close:hover {
 	background-color: #940303;
 }
+
+/* List */
 
 .list {
 	display: flex;
@@ -93,10 +96,6 @@ div .card p {
 	border-width:0px;
 	border:none;
 }
-
-/* input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-	display: none;
-} */
 
 input:focus, textarea:focus, select:focus{
     outline: none;
