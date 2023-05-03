@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
-h1, h2, h3, p {
+h1, h2, h3, p,a {
 	font-family: 'Open Sans';
 }
 
-h1 {
+h1, h2 {
 	display: flex;
 	justify-content: center;
 }

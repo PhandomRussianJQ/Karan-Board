@@ -129,7 +129,7 @@ function loadStorage(){
 	}else{
 		let rawCards = localStorage.getItem("card");
 		let Cards = JSON.parse(rawCards);
-		let cardsLength = tet.length
+		let cardsLength = Cards.length
 	
 	
 		for (var i = 0; i < cardsLength; i++) {
