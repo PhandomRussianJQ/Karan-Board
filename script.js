@@ -92,35 +92,57 @@ function testfun(){
 
 function testcool(){
 	localStorage.removeItem("card");
-	var todoList = document.querySelectorAll("#todo .card");
-	var inWorkList = document.querySelectorAll("#inWork .card");
-	var finishedList = document.querySelectorAll("#finished .card");
+	var todoList = document.querySelectorAll(".card");
 
-	var json = {}
+	var json = "{}"
+	var array = []
 	Array.from(todoList).forEach(function(todo) {
 
 		const id= todo.id;
 		const titel = todo.firstElementChild;
 		const description = titel.nextElementSibling;
-		const parrent = todo.parentElement
-		const parrentid = parrent.id;
-		const date = description.nextElementSibling.value;
+		const parrentElemten = todo.parentElement.id;
+		const date = description.nextElementSibling.value;	
 		
-		json += `{"parrent": "${parrentid}", "id": "${id}", "titel": "${titel.outerText}", "description": "${description.outerText}", "date": "${date}"}`;
+		array.push(
+			{
+				id: id,
+				titel: titel.outerText,
+				description: description.outerText,
+				date: date,
+				parrent: parrentElemten
+			}
+		);
+		json = array;
 	});
 
-	localStorage.setItem("card", JSON.stringify(json));
+	console.log('json: ', json);
+
+	localStorage.setItem("todocard", JSON.stringify(json));
 	alert("Das Board wurde gesprechert.");
 }
 
 function testnotcool(){
-
-
-	if(localStorage.getItem("card") == null || localStorage.getItem("card") == "") {
-		alert("Es gibt kein Board zum Laden. Erstelle neue Karten und speicher es dann.")
+	if(localStorage.getItem("todocard") == null || localStorage.getItem("todocard") == '"{}"') {
+		alert("Es gibt kein Board zum Laden. Erstelle neue Karten und speicher es dann.");
 		return;
 	}else{
-		document.getElementById("inWork").innerHTML += localStorage.getItem("card")		
+		let tst = localStorage.getItem("todocard");
+		let tet = JSON.parse(tst);
+		console.log(tet); 
+		let arrayLength = tet.length
+	
+	
+		for (var i = 0; i < arrayLength; i++) {
+			document.getElementById(tet[i].parrent).innerHTML += `
+			<div class="card" id="${tet[i].id}" draggable="true" ondragstart="dragstart(event)">
+				<h3 contenteditable="true">${tet[i].titel}</h3>
+				<p contenteditable="true">${tet[i].description}</p>
+				<input type="datetime-local" id="dateFinished" value=${tet[i].date}>
+				<button class="delete" id="${tet[i].id}" onclick = "deletecard(this)">X</button>
+			</div>`
+		}
+	
 	}
 }
 
