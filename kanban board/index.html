@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Kanban Board</title>
+</head>
+<body>
+	<h1>My TO DO</h1>
+	<input id="create" type="submit" name="button" value="New Card" class="create" onclick="getnewui()"/>
+	<div class="ui">
+		<div class="createui" id="createui">
+			<iframe name="votar" style="display:none;"></iframe>
+			<form onsubmit="newcard()" target="votar" >
+				<input type="text" id="titel" name="titel">
+				<textarea id="description" name="description"></textarea>
+				<input type="datetime-local" id="timeDelete" name="timeDelete">
+				<select id="status">
+					<option value="todo">To Do</option>
+					<option value="inWork">In Work</option>
+					<option value="finished">Finished</option>
+				</select>
+				<input type="submit" id="createnew" class="create" value="Erstellen">
+				<input type="button" id="close" onclick="closeui()" class="close" value="Close">
+			</form>
+		</div>
+	</div>
+
+	<div class="dropdown">
+		<button class="dropbtn">Settings</button>
+		<div class="dropdown-content">
+		  <a onclick="testnotcool()">Board Laden</a>
+		  <a onclick="testcool()">Board Speichern</a>
+		  <a onclick="testfun()">Board löschen</a>
+		</div>
+	</div>
+
+	<div class="list" id="list">
+		<div class="todo" id="todo" ondragover="onDragover(event)" ondrop="onDrop(event)">
+			<h2>TO DO</h2>
+			<!-- <div class="card" id="99" draggable="true" ondragstart="dragstart(event)">
+				<h3 contenteditable="true">Test</h3>
+				<p contenteditable="true" >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</p>
+				<input type="datetime-local" id="dateFinished" value="2017-06-01T08:30">
+				<button class="delete" id="1" onclick = "deletecard(this)">X</button>
+			</div>
+			<div class="card" id="999" draggable="true" ondragstart="dragstart(event)">
+				<h3 contenteditable="true">Test</h3>
+				<p contenteditable="true" >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</p>
+				<input type="datetime-local" id="dateFinished" value="2017-06-01T08:30">
+				<button class="delete" id="2" onclick = "deletecard(this)">X</button>
+			</div> -->
+		</div>
+
+		<div class="inWork" id="inWork" ondragover="onDragover(event)" ondrop="onDrop(event)">
+			<h2>In Work</h2>
+		</div>
+
+		<div class="finished" id="finished" ondragover="onDragover(event)" ondrop="onDrop(event)">
+			<h2>Finished</h2>
+		</div>
+	</div>
+</body>
+<link rel="stylesheet" href="./style.css">
+<script src="./script.js"></script>
+</html>
