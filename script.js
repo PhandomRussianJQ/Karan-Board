@@ -140,8 +140,6 @@ function loadStorage(){
 			<input type="datetime-local" id="dateFinished" value=${Cards[i].date}>
 			<button class="delete" id="${Cards[i].id}" onclick = "deletecard(this)">X</button>
 		</div>`
-
-
 		}
 	
 	}
