@@ -10,7 +10,7 @@ h1, h2 {
 }
 /* Button */
 
-input[type="submit"], input[type="button"]{
+input[type="submit"], input[type="button"], button{
 	border: none;
 	color: white;
 	padding: 16px;
