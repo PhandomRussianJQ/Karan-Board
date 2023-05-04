@@ -156,7 +156,7 @@ addEventListener("beforeunload", (event) => {
 
 // Diffrent Boards
 
-function clickBoard(){
+function clickBoard1(){
 	var cards = document.querySelectorAll(".card");
 	document.getElementById("Boardheader").innerText = "Board 2";
 	let text = "Do you really want to switch the Board.\nIf you dont save the board evrythink is gone!";
