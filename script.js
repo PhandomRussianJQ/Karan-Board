@@ -1,5 +1,4 @@
 // Create a Card & Create UI
-
 let id;
 
 if(localStorage.getItem("id") === null ){
@@ -16,16 +15,13 @@ function newcard(){
 	var status = document.getElementById("status").value;
 	var statusspalte = document.getElementById(status);
 
-
-
 	statusspalte.innerHTML += `
-	<div class="card" id="${id}" draggable="true" ondragstart="dragstart(event)" >
+	<div class="card" id="${id}" draggable="true" ondragstart="dragstart(event)" ondrag="onDrag(event)">
 		<h3 contenteditable="true" onkeypress="return (this.innerText.length <= 21)">${titel}</h3>
 		<p contenteditable="true" onkeypress="return (this.innerText.length <= 250)">${description}</p>
 		<input type="datetime-local" id="dateFinished" value=${date}>
-		<button class="delete" id="${id}" onclick = "deletecard(this)">X</button>
+		<button class="delete" id="${id}" onclick = "deletecard(this)">X</button>     
 	</div>`
-
 	id++;
 	localStorage.setItem("id", id);
 }
@@ -54,11 +50,15 @@ function deletecard(e){
 	parrent.remove();
 }
 
-
 // Drag and Drop
 
 function dragstart(event){
 	event.dataTransfer.setData("Text" , event.target.id);
+}
+
+function onDrag(event){
+
+	event.target.style.opacity = 0.5;
 }
 
 function onDragover(event) {
@@ -89,13 +89,11 @@ function deleteStorage(){
 	} else {
 	  	return;
 	}
-
 }
 
 function saveStorage(){
 	localStorage.removeItem("card");
 	var cards = document.querySelectorAll(".card");
-
 	var json = "{}"
 	var array = []
 	Array.from(cards).forEach(function(card) {
@@ -117,7 +115,6 @@ function saveStorage(){
 		);
 		json = array;
 	});
-
 	localStorage.setItem("card", JSON.stringify(json));
 	alert("The Board was saved.");
 }
@@ -130,8 +127,7 @@ function loadStorage(){
 		let rawCards = localStorage.getItem("card");
 		let Cards = JSON.parse(rawCards);
 		let cardsLength = Cards.length
-	
-	
+		
 		for (var i = 0; i < cardsLength; i++) {
 			document.getElementById(Cards[i].parrent).innerHTML += 			
 		`<div class="card" id="${Cards[i].id}" draggable="true" ondragstart="dragstart(event)" >
@@ -140,8 +136,7 @@ function loadStorage(){
 			<input type="datetime-local" id="dateFinished" value=${Cards[i].date}>
 			<button class="delete" id="${Cards[i].id}" onclick = "deletecard(this)">X</button>
 		</div>`
-		}
-	
+		}	
 	}
 }
 
@@ -154,7 +149,29 @@ function autoLoad(){
 }
 document.addEventListener("DOMContentLoaded", autoLoad());
 
-
 addEventListener("beforeunload", (event) => {
 	return;
 });
+
+
+// Diffrent Boards
+
+function clickBoard(){
+	var cards = document.querySelectorAll(".card");
+	document.getElementById("Boardheader").innerText = "Board 2";
+	let text = "Do you really want to switch the Board.\nIf you dont save the board evrythink is gone!";
+	if (confirm(text) == true) {
+		if(localStorage.getItem("Board2")){  
+			Array.from(cards).forEach(function(card) {
+				card.remove();
+				
+			});
+		}else{
+			Array.from(cards).forEach(function(card) {
+				card.remove();
+			});
+		}
+	} else {
+	  	return;
+	}
+}

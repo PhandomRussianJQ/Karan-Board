@@ -8,11 +8,11 @@
 </head>
 <body>
 	<h1>My TO DO</h1>
-	<h2>Board 1</h2>
+	<h2 id="Boardheader">Board 1</h2>
 	<button id="create" class="create" onclick="getnewui()">New Card</button>
 	<div class="ui">
 		<div class="createui" id="createui">
-			<iframe name="votar" style="display:none;"></iframe>
+			<iframe name="votar" style="display:none;"></iframe> 
 			<form onsubmit="newcard()" target="votar" >
 				<input type="text" id="titel" name="titel" maxlength="21">
 				<textarea id="description" name="description" maxlength="250"></textarea>
@@ -40,7 +40,7 @@
 	<div class="dropdown">
 		<button class="dropbtn">Boards</button>
 		<div class="dropdown-content">
-		  <a onclick="">Board 1</a>
+		  <a onclick="clickBoard()">Board 1</a>
 		  <a onclick="">Board 2</a>
 		  <a onclick="">Board 3</a>
 		</div>

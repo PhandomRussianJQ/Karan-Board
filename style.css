@@ -66,7 +66,6 @@ button {
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	
 }
 
 .todo{
@@ -76,7 +75,6 @@ button {
 .inWork {
 	background-color: yellow;
 }
-
 
 .finished{
 	background-color: green;
@@ -178,13 +176,12 @@ textarea{
 	margin-bottom: 10px;
 }
   
-  .dropdown {
+.dropdown {
 	position: relative;
 	display: inline-block;
-	
-  }
+}
   
-  .dropdown-content {
+.dropdown-content {
 	display: none;
 	position: absolute;
 	background-color: #f1f1f1;
@@ -194,12 +191,12 @@ textarea{
 	float: right;
   }
   
-  .dropdown-content a {
+.dropdown-content a {
 	color: black;
 	padding: 12px 16px;
 	text-decoration: none;
 	display: block;
-  }
+}
 
 .dropdown-content a:hover {background-color: #ddd;}
 
