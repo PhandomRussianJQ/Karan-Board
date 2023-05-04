@@ -10,7 +10,19 @@ h1, h2 {
 }
 /* Button */
 
-input[type="submit"], input[type="button"], button{
+input[type="submit"], input[type="button"]{
+	border: none;
+	color: white;
+	padding: 16px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 12px;
+	border-radius: 4px;
+	position: relative;
+	display: inline-block;
+}
+
+button {
 	border: none;
 	color: white;
 	padding: 16px;
