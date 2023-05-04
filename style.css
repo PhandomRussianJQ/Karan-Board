@@ -81,6 +81,8 @@ div .card {
 div .card h3 {
 	margin-top: 10px;
 	margin-bottom: 0px;
+	max-width: 90%;
+	max-height: 50;
 }
 
 div .card p {

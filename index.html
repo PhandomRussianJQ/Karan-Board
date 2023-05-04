@@ -14,8 +14,8 @@
 		<div class="createui" id="createui">
 			<iframe name="votar" style="display:none;"></iframe>
 			<form onsubmit="newcard()" target="votar" >
-				<input type="text" id="titel" name="titel">
-				<textarea id="description" name="description"></textarea>
+				<input type="text" id="titel" name="titel" maxlength="21">
+				<textarea id="description" name="description" maxlength="250"></textarea>
 				<input type="datetime-local" id="timeDelete" name="timeDelete">
 				<select id="status">
 					<option value="todo">To Do</option>

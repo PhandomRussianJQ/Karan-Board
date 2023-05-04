@@ -19,9 +19,9 @@ function newcard(){
 
 
 	statusspalte.innerHTML += `
-	<div class="card" id="${id}" draggable="true" ondragstart="dragstart(event)">
-		<h3 contenteditable="true">${titel}</h3>
-		<p contenteditable="true">${description}</p>
+	<div class="card" id="${id}" draggable="true" ondragstart="dragstart(event)" >
+		<h3 contenteditable="true" onkeypress="return (this.innerText.length <= 21)">${titel}</h3>
+		<p contenteditable="true" onkeypress="return (this.innerText.length <= 250)">${description}</p>
 		<input type="datetime-local" id="dateFinished" value=${date}>
 		<button class="delete" id="${id}" onclick = "deletecard(this)">X</button>
 	</div>`
@@ -133,13 +133,15 @@ function loadStorage(){
 	
 	
 		for (var i = 0; i < cardsLength; i++) {
-			document.getElementById(Cards[i].parrent).innerHTML += `
-			<div class="card" id="${Cards[i].id}" draggable="true" ondragstart="dragstart(event)">
-				<h3 contenteditable="true">${Cards[i].titel}</h3>
-				<p contenteditable="true">${Cards[i].description}</p>
-				<input type="datetime-local" id="dateFinished" value=${Cards[i].date}>
-				<button class="delete" id="${Cards[i].id}" onclick = "deletecard(this)">X</button>
-			</div>`
+			document.getElementById(Cards[i].parrent).innerHTML += 			
+		`<div class="card" id="${Cards[i].id}" draggable="true" ondragstart="dragstart(event)" >
+			<h3 contenteditable="true" onkeypress="return (this.innerText.length <= 21)">${Cards[i].titel}</h3>
+			<p contenteditable="true" onkeypress="return (this.innerText.length <= 250)">${Cards[i].description}</p>
+			<input type="datetime-local" id="dateFinished" value=${Cards[i].date}>
+			<button class="delete" id="${Cards[i].id}" onclick = "deletecard(this)">X</button>
+		</div>`
+
+
 		}
 	
 	}
