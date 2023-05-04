@@ -86,13 +86,13 @@ function deleteStorage(){
 	if (confirm(text) == true) {
 		localStorage.clear();
 		location.reload()
-	} else {
+  	} else {
 	  	return;
 	}
 }
 
 function saveStorage(){
-	localStorage.removeItem("card");
+	localStorage.removeItem("Board1");
 	var cards = document.querySelectorAll(".card");
 	var json = "{}"
 	var array = []
@@ -115,16 +115,16 @@ function saveStorage(){
 		);
 		json = array;
 	});
-	localStorage.setItem("card", JSON.stringify(json));
+	localStorage.setItem("Board1", JSON.stringify(json));
 	alert("The Board was saved.");
 }
 
 function loadStorage(){
-	if(localStorage.getItem("card") == null || localStorage.getItem("card") == '"{}"') {
+	if(localStorage.getItem("Board1") == null || localStorage.getItem("Board1") == '"{}"') {
 		alert("There is no board to load. Create new Card and then save it.");
 		return;
 	}else{
-		let rawCards = localStorage.getItem("card");
+		let rawCards = localStorage.getItem("Board1");
 		let Cards = JSON.parse(rawCards);
 		let cardsLength = Cards.length
 		
@@ -141,7 +141,7 @@ function loadStorage(){
 }
 
 function autoLoad(){
-	if(localStorage.getItem("card") == null || localStorage.getItem("card") == '"{}"') {
+	if(localStorage.getItem("Board1") == null || localStorage.getItem("Board1") == '"{}"') {
 		return;
 	}else{
 		loadStorage();
@@ -164,7 +164,23 @@ function clickBoard(){
 		if(localStorage.getItem("Board2")){  
 			Array.from(cards).forEach(function(card) {
 				card.remove();
-				
+				if(localStorage.getItem("Board2") == null || localStorage.getItem("Board2") == '"{}"') {
+					return;
+				}else{
+					let rawCards = localStorage.getItem("Board2");
+					let Cards = JSON.parse(rawCards);
+					let cardsLength = Cards.length
+					
+					for (var i = 0; i < cardsLength; i++) {
+						document.getElementById(Cards[i].parrent).innerHTML += 			
+					`<div class="card" id="${Cards[i].id}" draggable="true" ondragstart="dragstart(event)" >
+						<h3 contenteditable="true" onkeypress="return (this.innerText.length <= 21)">${Cards[i].titel}</h3>
+						<p contenteditable="true" onkeypress="return (this.innerText.length <= 250)">${Cards[i].description}</p>
+						<input type="datetime-local" id="dateFinished" value=${Cards[i].date}>
+						<button class="delete" id="${Cards[i].id}" onclick = "  deletecard(this)">X</button>
+					</div>`
+					}	
+				}
 			});
 		}else{
 			Array.from(cards).forEach(function(card) {
