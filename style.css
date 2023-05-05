@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
-h1, h2, h3, p,a {
+* {
 	font-family: 'Open Sans';
 }
 
@@ -16,7 +16,7 @@ input[type="submit"], input[type="button"]{
 	padding: 16px;
 	text-align: center;
 	text-decoration: none;
-	font-size: 12px;
+	font-size: 15px;
 	border-radius: 4px;
 	position: relative;
 	display: inline-block;
@@ -32,6 +32,8 @@ button {
 	border-radius: 4px;
 	position: relative;
 	display: inline-block;
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .create {
@@ -79,6 +81,8 @@ button {
 .finished{
 	background-color: green;
 }
+
+/* Cards */
 
 div .card {
 	display: flex;
@@ -164,42 +168,130 @@ textarea{
 
 /* Settings */
 
-.dropbtn {
-	border: none;
-	color: white;
-	padding: 16px;
+.dropdown {
+	margin: 0;
+	margin-bottom: 10px;
+	padding: 0;
+	list-style: none;
+	width: 100px;
+	border-radius: 4px;
+	background-color: #4CAF50;
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dropdown li {
+	position: relative;
+}
+
+.dropdown li a {
+	color: #ffffff;
 	text-align: center;
 	text-decoration: none;
-	font-size: 12px;
-	border-radius: 4px;
-	background-color: blue;
-	margin-bottom: 10px;
+	display: block;
+	padding: 10px;
 }
-  
-.dropdown {
-	position: relative;
-	display: inline-block;
-}
-  
-.dropdown-content {
-	display: none;
+
+.dropdown li ul {
 	position: absolute;
-	background-color: #f1f1f1;
-	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	z-index: 1;
-	float: right;
-  }
-  
-.dropdown-content a {
-	color: black;
-	padding: 12px 16px;
-	text-decoration: none;
+	top: 100%;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: none;
+	line-height: normal;
+	background-color: #cccccc;
+}
+
+.dropdown li ul li a {
+	text-align: left;
+	color: #000000;
+	font-size: 14px;
+	padding: 10px;
+	display: block;
+	white-space: nowrap;
+}
+
+.dropdown li ul li a:hover {
+	background-color: #148005;
+	color: #ffffff;
+}
+
+.dropdown li ul li ul {
+	left: 100%;
+	top: 0;
+}
+
+ul li:hover>a {
+	background-color: #0abf53;
+	color: #ffffff !important;
+}
+
+ul li:hover>ul {
 	display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.overflow-hidden {
+ overflow: hidden;
+}
 
-.dropdown:hover .dropdown-content {display: block;}
+/* Animation */
 
-.dropdown:hover .dropbtn {background-color: rgb(2, 2, 121);}
+.drop-in {
+ animation: drop-in 1s ease 200ms backwards;
+}
+
+.drop-in-2 {
+ animation: drop-in 1200ms ease 500ms backwards;
+}
+
+@keyframes drop-in {
+ from {
+  opacity: 0;
+  transform: translateY(-100px);
+ }
+ to {
+  opacity: 1;
+  transform: translate(0px);
+ }
+}
+
+.dropdown-menu {
+  background-color: #fff;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  text-align: center;
+  top: 0;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.dropdown-menu li:first-child {
+  cursor: default;
+}
+
+.dropdown-menu a {
+  color: #000;
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.dropdown-menu a:hover {
+  color: #fff;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  top: 100%;
+  width: 100%;
+  -webkit-transition: all .5s, background, 2s .5s linear;
+  transition: all .5s, background 2s .5s linear;
+}

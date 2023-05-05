@@ -76,6 +76,7 @@ function onDrop(event){
 
 // local storage
 
+//Delete Local Storage
 function deleteStorage(){
 	let text = "Do you really want to delete this Board.\nIt's all gone then!";
 	if (confirm(text) == true) {
@@ -105,7 +106,7 @@ function deleteStorageAll(){
 	  	return;
 	}
 }
-
+// save local storage
 function saveStorage(){
 	var cards = document.querySelectorAll(".card");
 	var json = "{}"
@@ -138,7 +139,6 @@ function saveStorage(){
 	}else {
 		return;
 	}
-	// localStorage.setItem("Board1", JSON.stringify(json));
 	alert("The Board was saved.");
 }
 
@@ -161,6 +161,8 @@ function autoLoad(){
 		loadStorageBoard1();
 	}
 }
+
+// Add Events
 document.addEventListener("DOMContentLoaded", autoLoad());
 
 addEventListener("beforeunload", (event) => {
@@ -171,7 +173,7 @@ addEventListener("beforeunload", (event) => {
 
 function loadStorageBoard1(){
 	if(localStorage.getItem("Board1") == null || localStorage.getItem("Board1") == '"{}"') {
-		alert("There is no board to load. Create new Card and then save it.");
+		alert("There is nothing in the Board to load. Create new Card and then save it.");
 		return;
 	}else{
 		let rawCards = localStorage.getItem("Board1");
@@ -192,7 +194,7 @@ function loadStorageBoard1(){
 
 function loadStorageBoard2(){
 	if(localStorage.getItem("Board2") == null || localStorage.getItem("Board2") == '"{}"') {
-		alert("There is no board to load. Create new Card and then save it.");
+		alert("There is nothing in the Board to load. Create new Card and then save it.");
 		return;
 	}else{
 		let rawCards = localStorage.getItem("Board2");
@@ -213,7 +215,7 @@ function loadStorageBoard2(){
 
 function loadStorageBoard3(){
 	if(localStorage.getItem("Board3") == null || localStorage.getItem("Board3") == '"{}"') {
-		alert("There is no board to load. Create new Card and then save it.");
+		alert("There is nothing in the Board to load. Create new Card and then save it.");
 		return;
 	}else{
 		let rawCards = localStorage.getItem("Board3");
@@ -232,6 +234,7 @@ function loadStorageBoard3(){
 	}
 }
 
+//switch Boards
 
 function clickBoard1(){
 	var cards = document.querySelectorAll(".card");

@@ -7,6 +7,7 @@
 	<title>Kanban Board</title>
 </head>
 <body>
+	<div class="drop-in">
 	<h1>My TO DO</h1>
 	<h2 id="Boardheader">Board 1</h2>
 	<button id="create" class="create" onclick="getnewui()">New Card</button>
@@ -27,27 +28,30 @@
 			</form>
 		</div>
 	</div>
-
-	<div class="dropdown">
-		<button class="dropbtn">Settings</button>
-		<div class="dropdown-content">
-		  <a onclick="loadStorage()">Board load</a>
-		  <a onclick="saveStorage()">Board save</a>
-		  <a onclick="deleteStorage()">Delete this Board</a>
-		  <a onclick="deleteStorageAll()">Delete all Boards</a>	  
-		</div>
+	<ul class="dropdown">
+        <li><a href="#">Settings</a>
+            <ul class="dropdown-menu">
+                <li><a onclick="loadStorage()">Board load</a></li>
+                <li><a onclick="saveStorage()">Board save</a></li>
+                <li><a onclick="">Board select</a>
+                    <ul>
+                        <li><a onclick="clickBoard1()">Board 1</a></li>
+                        <li><a onclick="clickBoard2()">Board 2</a></li>
+						<li><a onclick="clickBoard3()">Board 3</a></li>
+                    </ul>
+                </li>
+				<li><a>Delete</a>
+					<ul>
+						<li><a onclick="deleteStorage()">Delete this Board</a></li>
+						<li><a onclick="deleteStorageAll()">Delete all Boards</a></li>
+					</ul>
+				</li>
+            </ul>
+        </li>
+    </ul>
 	</div>
 
-	<div class="dropdown">
-		<button class="dropbtn">Boards</button>
-		<div class="dropdown-content">
-		  <a onclick="clickBoard1()">Board 1</a>
-		  <a onclick="clickBoard2()">Board 2</a>
-		  <a onclick="clickBoard3()">Board 3</a>
-		</div>
-	</div>
-
-	<div class="list" id="list">
+	<div class="list drop-in-2" id="list" >
 		<div class="todo" id="todo" ondragover="onDragover(event)" ondrop="onDrop(event)">
 			<h2>TO DO</h2>
 		</div>
