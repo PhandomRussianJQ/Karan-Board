@@ -237,7 +237,7 @@ function loadStorageBoard3(){
 function clickBoard1(){
 	var cards = document.querySelectorAll(".card");
 	document.getElementById("Boardheader").innerText = "Board 1";
-	let text = "Do you really want to switch the Board.\nIf you dont save the board evrythink is gone!";
+	let text = "Do you really want to switch the Board.\nIf you dont save the board everything is gone!";
 	
 	if (confirm(text) == true) {
 		if(localStorage.getItem("Board1")){  
@@ -262,7 +262,7 @@ function clickBoard1(){
 function clickBoard2(){
 	var cards = document.querySelectorAll(".card");
 	document.getElementById("Boardheader").innerText = "Board 2";
-	let text = "Do you really want to switch the Board.\nIf you dont save the board evrythink is gone!";
+	let text = "Do you really want to switch the Board.\nIf you dont save the board everything is gone!";
 	
 	if (confirm(text) == true) {
 		if(localStorage.getItem("Board2")){  
@@ -287,7 +287,7 @@ function clickBoard2(){
 function clickBoard3(){
 	var cards = document.querySelectorAll(".card");
 	document.getElementById("Boardheader").innerText = "Board 3";
-	let text = "Do you really want to switch the Board.\nIf you dont save the board evrythink is gone!";
+	let text = "Do you really want to switch the Board.\nIf you dont save the board everything is gone!";
 	
 	if (confirm(text) == true) {
 		if(localStorage.getItem("Board3")){  
