@@ -107,7 +107,6 @@ function deleteStorageAll(){
 }
 
 function saveStorage(){
-	localStorage.removeItem("Board1");
 	var cards = document.querySelectorAll(".card");
 	var json = "{}"
 	var array = []
@@ -159,7 +158,7 @@ function autoLoad(){
 	if(localStorage.getItem("Board1") == null || localStorage.getItem("Board1") == '"{}"') {
 		return;
 	}else{
-		loadStorage();
+		loadStorageBoard1();
 	}
 }
 document.addEventListener("DOMContentLoaded", autoLoad());
